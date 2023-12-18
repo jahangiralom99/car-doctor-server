@@ -9,7 +9,9 @@ const port = process.env.PORT || 3000;
 
 // middleware
 app.use(cors({
-  origin: ["http://localhost:5173"],
+  origin: [
+    "https://car-doctor-8b3a8.web.app",
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -71,7 +73,8 @@ async function run() {
       res
         .cookie("token", token, {
           httpOnly: true,
-          secure: false, //http://localhost:5173/login jodi https hoy taile ture dibo.
+          secure: true, //http://localhost:5173/login jodi https hoy taile ture dibo.
+          sameSite: "none",
         })
         .send({success: true});
     });
